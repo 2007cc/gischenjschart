@@ -12,8 +12,9 @@ Highcharts.theme = {
     global: {                                                               
                 useUTC: false                                                       
             } ,
-    colors: ["#7cb5ec", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+    colors: ["rgba(225,163,163,0.3)", "#f7a35c", "#90ee7e", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
         "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+        plotBackgroundColor:"#CA5556",
     chart: {
         backgroundColor: null,
         style: {
@@ -30,12 +31,21 @@ Highcharts.theme = {
         text: '统计图'
     },
     tooltip: {
+        style:{
+          color: '#ffffff',
+          fontSize: '18px',
+          padding: '5px',
+          fontWeight:'bold'
+        },
         borderWidth: 0,
-        backgroundColor: 'rgba(219,219,216,0.8)',
+        backgroundColor: 'rgba(201,92,91,0.9)',
+        borderRadius:6,
         shadow: false,
         formatter:function(){
-            return Highcharts.dateFormat('%H:%M', this.x)+'     +'+this.y;
-        }
+            return Highcharts.dateFormat('%H:%M', this.x)+'     +'+this.y.toFixed();
+        },
+
+
     },
     legend:{
         enabled:false
@@ -58,7 +68,7 @@ Highcharts.theme = {
         tickLength:0,
         showFirstLabel: true,
         showLastLabel:false,
-        tickPixelInterval: 80,
+        tickPixelInterval: 120,
 
     },
     yAxis: {
@@ -83,6 +93,21 @@ Highcharts.theme = {
     credits: {
         enabled: false
     },
+
+     plotOptions: {
+            series: {
+                lineColor: '#DFDEDB',
+                lineWidth: 2,
+                // enableMouseTracking: false,
+                fillColor:'rgba(225,163,163,0.3)',
+                marker: {
+                    fillColor: 'rgba(201,92,91,0.9)',
+                    lineWidth: 0.5,
+                    lineColor: null // inherit from series
+                },
+                showCheckbox: true
+            }
+        },
     // General
     background2: '#F0F0EA'
     
