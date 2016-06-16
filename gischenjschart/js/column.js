@@ -15,8 +15,10 @@ $(function () {
                 overflow: 'justify',
                 align:'right',
                 formatter:function(){
-                    return this.value+'12%';
-                }                                    
+                    var index=this.chart.xAxis[0].categories.indexOf(this.value);
+                    return this.value+'<strong style="margin:0px 20px 0px 10px;">'+this.chart.series[0].yData[index]+'</strong>';
+                } ,
+                useHTML:true                                   
             },                                                          
         },                                                                 
         yAxis: {  
@@ -31,7 +33,9 @@ $(function () {
             }
         },                                                                 
         tooltip: {                                                         
-            valueSuffix: ' millions'                                       
+           formatter:function(){
+                return this.x+'  '+this.y;
+            },                                  
         },                                                                 
         plotOptions: {                                                     
             bar: {                                                         
@@ -48,7 +52,7 @@ $(function () {
         },                                                                 
         series: [{                                                               
             name: 'Year 2008',                                             
-            data: [973, 914, 454, 732, 340,400,517]                                
+            data: [93, 14, 44, 73, 34,40,57]                                
         }]                                                                 
     }); 
 
@@ -106,11 +110,22 @@ $(function () {
             enabled: false
         },
         plotOptions: {
-
+            series: {
+                lineColor: '#DFDEDB',
+                lineWidth: 2,
+                fillColor:'rgba(225,163,163,0.3)',
+                marker: {
+                    fillColor: 'rgba(201,92,91,0.9)',
+                    lineWidth: 0.5,
+                    lineColor: null // inherit from series
+                },
+                showCheckbox: true
+            }
         }, 
         series: [ {
             name: '上报事件',
-            data: [0,3, 4, 3, 5, 4, 10, 12]
+            data: [0,3, 4, 3, 5, 4, 10, 12],
+            color:'rgba(2,163,163,0.3)',
         },{
             name: '工作事项',
             data: [5,1, 3, 4, 3, 3, 5, 4]

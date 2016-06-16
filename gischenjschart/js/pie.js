@@ -35,7 +35,7 @@ $(function () {
         borderRadius:6,
         shadow: false,
         formatter:function(){
-            return Highcharts.dateFormat('%H:%M', this.x)+'     +'+this.y.toFixed();
+            return this.key+'  '+this.y;
         },
 
 
@@ -87,15 +87,15 @@ $(function () {
             type: 'pie',    
             name: 'Versions',
             data: [
-                ['Firefox',   44.2],
-                ['IE7',       26.6],
-                ['IE6',       20],
-                ['Chrome',    3.1],
-                ['Chrome',    3.1],
-                ['Chrome',    3.1],
-                ['Chrome',    3.1],
-                ['Chrome',    3.1],
-                ['Other',    5.4]
+                ['车辆',   44],
+                ['工地',   26],
+                ['水质',   20],
+                ['流量',   31],
+                ['水位',    3],
+                ['雨量',   31],
+                ['流速',   13],
+                ['路灯',   30],
+                ['井盖',   54]
             ],
             size: '60%',
             innerSize: '50%',

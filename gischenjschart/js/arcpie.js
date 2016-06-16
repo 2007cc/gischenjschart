@@ -35,7 +35,7 @@ $(function () {
         borderRadius:6,
         shadow: false,
         formatter:function(){
-            return Highcharts.dateFormat('%H:%M', this.x)+'     +'+this.y.toFixed();
+            return this.key+'  '+this.y;
         },
 
 
@@ -51,9 +51,6 @@ $(function () {
   plotOptions: {
         pie: {
             shadow: false,
-            center: ['50%', '50%'],
-            startAngle: -90,
-            endAngle:90,  
             center: ['50%', '70%']
         }
     },
@@ -78,11 +75,15 @@ $(function () {
             type: 'pie',    
             name: 'Versions',
             data: [
-                ['Firefox',   44.2],
-                ['IE7',       26.6],
-                ['IE6',       20],
-                ['Chrome',    3.1],
-                ['Other',    5.4]
+                {                                                          
+                    name: '已清扫',                                             
+                    y: 44,                                                    
+                    color: Highcharts.getOptions().colors[1] // John's color  
+                },{                                                          
+                    name: '未清扫',                                              
+                    y: 26,                                                    
+                    color: Highcharts.getOptions().colors[2] // Joe's color   
+                }
             ],
             size: '60%',
             innerSize: '50%',
@@ -92,25 +93,29 @@ $(function () {
                     // display only if larger than 1
                     return this.y > 1 ? '<b>'+ this.point.name +':</b> '+ this.y +'%'  : null;
                 }
-            }
+            },
+            legendIndex: 2
         },
 
         {
             type: 'pie',    
             name: 'Versions',
             data: [
-                ['Firefox',   44.2],
-                ['IE7',       26.6],
-                ['IE6',       20],
-                ['Chrome',    3.1],
-                ['Other',    5.4]
+                {                                                          
+                    name: '未停车',                                             
+                    y: 23,                                                    
+                    color: Highcharts.getOptions().colors[1] // John's color  
+                },{                                                          
+                    name: '已停车',                                              
+                    y: 79,                                                    
+                    color: Highcharts.getOptions().colors[2] // Joe's color   
+                }
             ],
             size: '60%',
             innerSize: '50%',
             center: ['50%', '70%'],  
             dataLabels: {
                 formatter: function() {
-                    // display only if larger than 1
                     return this.y > 1 ? '<b>'+ this.point.name +':</b> '+ this.y +'%'  : null;
                 }
             }
@@ -118,16 +123,12 @@ $(function () {
         {                                                              
             type: 'pie',                                                  
             name: 'Total consumption',                                    
-            data: [{                                                      
-                name: 'Jane',                                             
-                y: 13,                                                    
-                color: Highcharts.getOptions().colors[0] // Jane's color  
-            }, {                                                          
-                name: 'John',                                             
+            data: [ {                                                          
+                name: '未停车',                                             
                 y: 23,                                                    
                 color: Highcharts.getOptions().colors[1] // John's color  
             }, {                                                          
-                name: 'Joe',                                              
+                name: '已停车',                                              
                 y: 19,                                                    
                 color: Highcharts.getOptions().colors[2] // Joe's color   
             }],                                                                           
